@@ -1,0 +1,47 @@
+"sushi_YEL_ETH": {
+            "chain": "1",
+            "logoUrl": [
+                "./icons/yel.svg",
+                "./icons/eth.svg"
+            ],
+            "apyIconUrls": [
+                "./icons/yel.svg"
+            ],
+            "apyTokenSymbols": [
+                "YEL"
+            ],
+            "tokenNames": [
+                "YEL",
+                "ETH"
+            ],
+            "platform": [
+                "Sushiswap"
+            ],
+            "tags": [
+                "Advanced"
+            ],
+            "tokenAddress": "0xc83cE8612164eF7A13d17DDea4271DD8e8EEbE5d",
+            "decimals": "18",
+            "vaultAddress": "0x81a276Cc1323A76ad0C71657139e6bCdC3C52b30",
+            "cmcRewardTokenSymbols": [
+                "iFARM",
+                "YEL",
+                "ETH"
+            ],
+            "id": "sushi_YEL_ETH",
+            "pricePerFullShare": "2712384482679267701",
+            "estimatedApy": "4.83",
+            "estimatedApyBreakdown": [
+                "4.83"
+            ],
+            "boostedEstimatedAPY": "4.98",
+            "underlyingBalanceWithInvestment": "14441158641363530383127",
+            "usdPrice": "6.67113677565103839577",
+            "totalSupply": "5324156193040409469754",
+            "totalValueLocked": "96338.94449541103243764175",
+            "uniswapV3PositionId": null,
+            "uniswapV3UnderlyingTokenPrices": [],
+            "uniswapV3ManagedData": null,
+            "inactive": false,
+            "rewardPool": "0x54941AF9Eff1484DF58e250fE2FD3d79054ba269"
+        },

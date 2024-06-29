@@ -1,0 +1,50 @@
+diff --git a/node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol b/node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol
+index ed01013..978eb4a 100644
+--- a/node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol
++++ b/node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol
+@@ -43,6 +43,7 @@ abstract contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20,
+ 
+         string _name;
+         string _symbol;
++        uint8 _decimals;
+     }
+ 
+     // keccak256(abi.encode(uint256(keccak256("openzeppelin.storage.ERC20")) - 1)) & ~bytes32(uint256(0xff))
+@@ -64,7 +65,7 @@ abstract contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20,
+         __ERC20_init_unchained(name_, symbol_);
+     }
+ 
+-    function __ERC20_init_unchained(string memory name_, string memory symbol_) internal onlyInitializing {
++    function __ERC20_init_unchained(string memory name_, string memory symbol_) internal {
+         ERC20Storage storage $ = _getERC20Storage();
+         $._name = name_;
+         $._symbol = symbol_;
+@@ -87,6 +88,18 @@ abstract contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20,
+         return $._symbol;
+     }
+ 
++    /**
++     * @dev Sets {decimals} to a value other than the default one of 18.
++     *
++     * WARNING: This function should only be called from the constructor. Most
++     * applications that interact with token contracts will not expect
++     * {decimals} to ever change, and may work incorrectly if it does.
++     */
++    function _setupDecimals(uint8 decimals_) internal virtual {
++        ERC20Storage storage $ = _getERC20Storage();
++        $._decimals = decimals_;
++    }
++
+     /**
+      * @dev Returns the number of decimals used to get its user representation.
+      * For example, if `decimals` equals `2`, a balance of `505` tokens should
+@@ -101,7 +114,8 @@ abstract contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20,
+      * {IERC20-balanceOf} and {IERC20-transfer}.
+      */
+     function decimals() public view virtual returns (uint8) {
+-        return 18;
++        ERC20Storage storage $ = _getERC20Storage();
++        return $._decimals;
+     }
+ 
+     /**
