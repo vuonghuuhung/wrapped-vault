@@ -5,12 +5,13 @@ import "@nomicfoundation/hardhat-ethers";
 import "@nomicfoundation/hardhat-verify";
 import "hardhat-tracer";
 import "hardhat-ethernal";
+import "dotenv/config";
 
-import keys from "./dev-keys.json";
+// import process.env from "./dev-process.env.json";
 import { EthernalConfig } from "hardhat-ethernal/dist/types";
 
 const ethernalConfig: EthernalConfig = {
-  apiToken: keys.ethernalApiKey,
+  apiToken: process.env.ethernalApiKey,
   resetOnStart: "Hardhat Local Network",
   workspace: "Hardhat Local Network",
   disableSync: false,
@@ -18,9 +19,9 @@ const ethernalConfig: EthernalConfig = {
   skipFirstBlock: false,
   verbose: false,
   disabled: false,
-  uploadAst: true,
+  uploadAst: false,
   email: "vuonghuuhung2002@gmail.com",
-  password: keys.ethernalPassword,
+  password: process.env.ethernalPassword,
   serverSync: false,
 };
 
@@ -41,7 +42,7 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       forking: {
-        url: "https://eth-mainnet.g.alchemy.com/v2/" + keys.alchemyKeyMainnet,
+        url: "https://eth-mainnet.g.alchemy.com/v2/" + process.env.alchemyKeyMainnet,
         blockNumber: 19819900,
       },
       mining: {
@@ -49,6 +50,9 @@ const config: HardhatUserConfig = {
         interval: 2000,
       },
     },
+    localhost: {
+      url: process.env.HARDHAT_NODE_URL || "http://localhost:8545",
+    }
   },
   mocha: {
     timeout: 100000000,

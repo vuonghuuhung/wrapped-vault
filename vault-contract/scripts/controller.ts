@@ -10,7 +10,7 @@ import {
 } from "../typechain-types";
 import config from "./fork-mainnet-config";
 import { liquidations } from "../test/liquidation";
-import hre from "hardhat";
+// import hre from "hardhat";
 
 export const prepareManager = async () => {
   try {
@@ -23,19 +23,19 @@ export const prepareManager = async () => {
     console.log("Storage deployed at: ", storage.target);
     console.log({ governance: await storage.governance() });
 
-    await hre.ethernal.push({
-      name: "Storage",
-      address: storage.target.toString(),
-    });
+    // await hre.ethernal.push({
+      // name: "Storage",
+      // address: storage.target.toString(),
+    // });
 
     const universalLiquidatorRegistry =
       await new UniversalLiquidatorRegistry__factory(governance).deploy();
     await universalLiquidatorRegistry.waitForDeployment();
 
-    await hre.ethernal.push({
-      name: "UniversalLiquidatorRegistry",
-      address: universalLiquidatorRegistry.target.toString(),
-    });
+    // await hre.ethernal.push({
+      // name: "UniversalLiquidatorRegistry",
+      // address: universalLiquidatorRegistry.target.toString(),
+    // });
 
     const feeRewardForwarder = await new FeeRewardForwarder__factory(
       governance
@@ -47,10 +47,10 @@ export const prepareManager = async () => {
     );
     await feeRewardForwarder.waitForDeployment();
 
-    await hre.ethernal.push({
-      name: "FeeRewardForwarder",
-      address: feeRewardForwarder.target.toString(),
-    });
+    // await hre.ethernal.push({
+      // name: "FeeRewardForwarder",
+      // address: feeRewardForwarder.target.toString(),
+    // });
 
     const notifyHelper = await new NotifyHelper__factory(governance).deploy(
       storage.target,
@@ -59,30 +59,30 @@ export const prepareManager = async () => {
     );
     await notifyHelper.waitForDeployment();
 
-    await hre.ethernal.push({
-      name: "NotifyHelper",
-      address: notifyHelper.target.toString(),
-    });
+    // await hre.ethernal.push({
+      // name: "NotifyHelper",
+      // address: notifyHelper.target.toString(),
+    // });
 
     const rewardForwarder = await new RewardForwarder__factory(
       governance
     ).deploy(storage.target);
     await rewardForwarder.waitForDeployment();
 
-    await hre.ethernal.push({
-      name: "RewardForwarder",
-      address: rewardForwarder.target.toString(),
-    });
+    // await hre.ethernal.push({
+      // name: "RewardForwarder",
+      // address: rewardForwarder.target.toString(),
+    // });
 
     const universalLiquidator = await new UniversalLiquidator__factory(
       governance
     ).deploy();
     await universalLiquidator.waitForDeployment();
 
-    await hre.ethernal.push({
-      name: "UniversalLiquidator",
-      address: universalLiquidator.target.toString(),
-    });
+    // await hre.ethernal.push({
+      // name: "UniversalLiquidator",
+      // address: universalLiquidator.target.toString(),
+    // });
 
     await universalLiquidator.setPathRegistry(
       universalLiquidatorRegistry.target
@@ -99,10 +99,10 @@ export const prepareManager = async () => {
     );
     await controller.waitForDeployment();
 
-    await hre.ethernal.push({
-      name: "Controller",
-      address: controller.target.toString(),
-    });
+    // await hre.ethernal.push({
+      // name: "Controller",
+      // address: controller.target.toString(),
+    // });
 
     await storage.setController(controller.target);
 

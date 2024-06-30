@@ -11,10 +11,13 @@ import { prepareFactory } from "./factories";
 import { prepareVault } from "./vault";
 import { ethers } from "hardhat";
 import config from "./fork-mainnet-config";
-import { depositToVault } from "./helpers";
+// import { depositToVault } from "./helpers";
 
 async function main() {
   console.log("Forking mainnet and starting deploy");
+
+  // wait 1s to run blockchain
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   console.log("Preparing accounts");
   const { governance, farmer } = await prepareAccount();
@@ -194,27 +197,27 @@ async function main() {
   Vault: convex-oeth - able to deposit 998.767475973270029453 OETHCRV-f
   */
   // predeposit to vaults
-  await depositToVault(farmer, config.CURVE_USD_USDC_TOKEN, convexCrvUSDUSDVault, '100000');
-  await depositToVault(farmer, config.CURVE_CVX_CRV_TOKEN, convexCVXCRVVault, '200000');
-  await depositToVault(farmer, config.WETH_TOKEN, compoundVault, '5000');
-  await depositToVault(farmer, config.CURVE_3CRV_TOKEN, convex3CRVVault, '100000');
-  await depositToVault(farmer, config.USDT_TOKEN, idleUSDTVault, '100000');
-  await depositToVault(farmer, config.SUSHI_LP_TOKEN, yelWETHVault, '70000');
-  await depositToVault(farmer, config.DAI_TOKEN, idleDAIVault, '100000');
-  await depositToVault(farmer, config.CURVE_STETH_TOKEN, convexSTETHVault, '200');
-  await depositToVault(farmer, config.CURVE_OETH_TOKEN, convexOETHVault, '200');
-  await depositToVault(farmer, config.USDC_TOKEN, idleUSDCVault, '100000'); 
+  // await depositToVault(farmer, config.CURVE_USD_USDC_TOKEN, convexCrvUSDUSDVault, '100000');
+  // await depositToVault(farmer, config.CURVE_CVX_CRV_TOKEN, convexCVXCRVVault, '200000');
+  // await depositToVault(farmer, config.WETH_TOKEN, compoundVault, '5000');
+  // await depositToVault(farmer, config.CURVE_3CRV_TOKEN, convex3CRVVault, '100000');
+  // await depositToVault(farmer, config.USDT_TOKEN, idleUSDTVault, '100000');
+  // await depositToVault(farmer, config.SUSHI_LP_TOKEN, yelWETHVault, '70000');
+  // await depositToVault(farmer, config.DAI_TOKEN, idleDAIVault, '100000');
+  // await depositToVault(farmer, config.CURVE_STETH_TOKEN, convexSTETHVault, '200');
+  // await depositToVault(farmer, config.CURVE_OETH_TOKEN, convexOETHVault, '200');
+  // await depositToVault(farmer, config.USDC_TOKEN, idleUSDCVault, '100000'); 
 
-  await controller.doHardWork(compoundVault.target);
-  await controller.doHardWork(convex3CRVVault.target);
-  await controller.doHardWork(convexCrvUSDUSDVault.target);
-  await controller.doHardWork(convexCVXCRVVault.target);
-  await controller.doHardWork(convexOETHVault.target);
-  await controller.doHardWork(convexSTETHVault.target);
-  await controller.doHardWork(idleDAIVault.target);
-  await controller.doHardWork(idleUSDCVault.target);
-  await controller.doHardWork(idleUSDTVault.target);
-  await controller.doHardWork(yelWETHVault.target);
+  // await controller.doHardWork(compoundVault.target);
+  // await controller.doHardWork(convex3CRVVault.target);
+  // await controller.doHardWork(convexCrvUSDUSDVault.target);
+  // await controller.doHardWork(convexCVXCRVVault.target);
+  // await controller.doHardWork(convexOETHVault.target);
+  // await controller.doHardWork(convexSTETHVault.target);
+  // await controller.doHardWork(idleDAIVault.target);
+  // await controller.doHardWork(idleUSDCVault.target);
+  // await controller.doHardWork(idleUSDTVault.target);
+  // await controller.doHardWork(yelWETHVault.target);
 
   exit(0);
 }

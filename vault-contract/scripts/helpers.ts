@@ -2,7 +2,7 @@ import hre from "hardhat";
 import { ERC20__factory, VaultV1 } from "../typechain-types";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 import { BigNumberish } from "ethers";
-import { Addressable } from "ethers";
+// import { Addressable } from "ethers";
 
 const ethers = hre.ethers;
 
@@ -29,12 +29,12 @@ export const getUnderlyingTokenBalance = async (
   };
 };
 
-export const pushArtifact = async (name: string, address: string | Addressable) => {
-  await hre.ethernal.push({
-    name: name,
-    address: address.toString(),
-  });
-}
+// export const pushArtifact = async (name: string, address: string | Addressable) => {
+//   await hre.ethernal.push({
+//     name: name,
+//     address: address.toString(),
+//   });
+// }
 
 export const depositToVault = async (
   _farmer: HardhatEthersSigner,
