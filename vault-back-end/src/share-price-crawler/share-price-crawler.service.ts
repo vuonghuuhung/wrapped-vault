@@ -47,7 +47,7 @@ export class SharePriceCrawlerService {
 
       // if apy = 0, give me a random number
       if (apy === 0) {
-        return (Math.random() * 100).toFixed(4);
+        return '0';
       }
 
       return apy.toFixed(4);
@@ -81,7 +81,7 @@ export class SharePriceCrawlerService {
 
       // if apy = 0, give me a random number
       if (apy === 0) {
-        return (Math.random() * 100).toFixed(4);
+        return '0';
       }
 
       return (apy / 365).toFixed(4);
@@ -93,7 +93,6 @@ export class SharePriceCrawlerService {
 
   async handleCron(): Promise<void> {
     try {
-      console.log('start');
       console.time('cron share price');
       const reader = ContractClient.getReader();
       const provider = ContractClient.getProvider();
@@ -122,7 +121,7 @@ export class SharePriceCrawlerService {
       this.sharePriceModel.insertMany(sharePriceData);
       console.timeEnd('cron share price');
     } catch (error) {
-      console.error(error);
+      console.log('system still not ready');
     }
   }
 }

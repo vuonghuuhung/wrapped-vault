@@ -4,6 +4,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
+  //sleep 10s to wait mock system ready
+  await new Promise((resolve) => setTimeout(resolve, 10000));
+
   const app = await NestFactory.create(AppModule);
 
   app.enableCors();

@@ -18,7 +18,7 @@ export class ContractClient {
 
     static getProvider() {
         if (!this.provider) {
-            this.provider = new JsonRpcProvider('http://localhost:8545');
+            this.provider = new JsonRpcProvider(import.meta.env.HARDHAT_NODE_URL || 'http://localhost:8545');
         }
 
         return this.provider;
