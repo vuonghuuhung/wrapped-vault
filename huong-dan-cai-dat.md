@@ -7,12 +7,15 @@ Yêu cầu:
 - Docker
 - Node version: 20.x.x
 - Biến môi trường giống với file .env.example cho từng folder: vault-back-end và vault-contract
+- Mongodb và tạo connection uri
+- Docker Compose 
 
 Install dependencies:
 - Chạy `npm install` ở từng folder vault-back-end, vault-contract và vault-front-end để install các packages cần thiết
 
 Build contracts: 
 - Chạy `cd vault-contract && npx hardhat compile` để compile các smart contracts
+- Chạy `npx hardhat run scripts/deployment.ts --network hardhat` để kiểm tra việc deployment diễn ra thành công 
 
 ```
 cd vault-contract && npx hardhat compile
